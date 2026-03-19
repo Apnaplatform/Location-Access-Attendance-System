@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Location Based Attendance{% endblock %}
+{% block content %}
+<section class="home-shell">
+    <div class="home-stack">
+        <section class="hero">
+            <div class="hero-card home-login-card">
+                <div class="home-heading">
+                    <p class="eyebrow">College Attendance Platform</p>
+                    <h1>Location Based Attendance Management System</h1>
+                    <p class="hero-copy">Role-based attendance workflow with secure login, lecture windows, and campus GPS verification.</p>
+                </div>
+                <div class="role-grid">
+                    <a class="role-card" href="{{ url_for('auth.login') }}">Login as Student</a>
+                    <a class="role-card" href="{{ url_for('auth.login') }}">Login as Teacher</a>
+                    <a class="role-card" href="{{ url_for('admin.dashboard') }}">Login as Admin</a>
+                </div>
+                <div class="hero-actions">
+                    <a class="btn btn-primary" href="{{ url_for('auth.login') }}">Login</a>
+                    <a class="btn btn-secondary" href="{{ url_for('auth.register_student') }}">Student Registration</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="home-teachers-section">
+            <div class="home-teachers-card card">
+                <div class="home-card-header">
+                    <h2>Teachers</h2>
+                    <p class="muted">Faculty accounts available in the system.</p>
+                </div>
+                <div class="teachers-grid">
+                    {% if teachers %}
+                    {% for teacher in teachers %}
+                    <a class="teacher-name-card" href="{{ url_for('auth.login', email=teacher.user.username) }}">
+                        <span class="teacher-name-text">{{ teacher.full_name }}</span>
+                    </a>
+                    {% endfor %}
+                    {% else %}
+                    <div class="teachers-empty-state">
+                        No teachers have been created yet.
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+    </div>
+</section>
+{% endblock %}
