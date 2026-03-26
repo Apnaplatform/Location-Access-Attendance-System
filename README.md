@@ -2,7 +2,7 @@
 
 A Flask-based web application that enables institutions to manage student attendance using location verification, admin approval, and roll number tracking.
 
-Project Link : https://lbams.onrender.com
+Project Link : https://github.com/Apnaplatform/Location-Access-Attendance-System
 
 ## 🚀 Features
 
